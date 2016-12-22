@@ -3,8 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <title>javascript 事件演示</title>
+    <script type="text/javascript" src="JsEventTest.js"></script>
 </head>
 <body>
+    <!--onchange 事件-->
+    <select id="city">
+        <option value="bj">北京</option>
+        <option value="tj">天津</option>
+        <option value="sh">上海</option>
+    </select>
+    <select id="area">
+        <option>海淀</option>
+        <option>朝阳</option>
+        <option>东城</option>
+    </select>
+
+    <br><br><br>
+    <!--onfocus 和 onblur 事件-->
+    <label for="txt">name:</label>
+    <input type="text" id="text">
+    <span id="action" style="color: red;font-size: 15px"></span>
+
+    <br><br><br>
+    <!--onmouseover 和 onmouseout 事件-->
+    <div id="d1" style="width: 100px;height: 100px;background-color: blue"></div>
+
+    <br><br><br>
+    <!--onload 事件-->
+    <span id="span2"></span>
 
 </body>
+
+
+<script type="text/javascript">
+    //onchange 事件
+    var select = document.getElementById("city");
+    select.onchange = function () {
+        var optionVal = select.value;
+        switch (optionVal){
+            case 'tj':
+                var area = document.getElementById("area");
+                area.innerHTML = "<option>南开</option><option>西青</option><option>河西</option>";
+                break;
+            case 'sh':
+                var area = document.getElementById("area");
+                area.innerHTML = "<option>浦东</option><option>杨浦</option><option>徐汇</option>";
+                break;
+            default:
+                alert('error');
+        }
+    }
+
+    //onfocus 和 onblur 事件
+    var text = document.getElementById("text");
+    text.onfocus = function () {
+        //友好提示
+        var span = document.getElementById("action");
+        span.innerHTML = "用户名格式最小8位";
+        span.style.color = "green";
+    }
+     text.onblur = function () {
+         //错误提示
+         var span = document.getElementById("action");
+         span.innerHTML = "对不起,格式不正确";
+         span.style.color = "red";
+     }
+
+    //onmouseover 和 onmouseout 事件
+    var div = document.getElementById("d1");
+    div.onmouseover = function () {
+        this.style.backgroundColor = "red";
+    }
+    div.onmouseout = function () {
+        this.style.backgroundColor = "green";
+    }
+
+    //onload 事件
+    window.onload = function () {
+        var  span2 = document.getElementById("span2");
+        span2.innerHTML = "hello js";
+
+    }
+
+
+
+
+
+</script>
 </html>
